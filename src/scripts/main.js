@@ -11,13 +11,13 @@ function convertToNumber(value) {
 }
 
 function sortList(list) {
-  const sorted = [...listOfEmployees.querySelectorAll('li')].sort((a, b) => {
+  const sorted = [...list.querySelectorAll('li')].sort((a, b) => {
     return (
       convertToNumber(b.dataset.salary) - convertToNumber(a.dataset.salary)
     );
   });
 
-  sorted.forEach((employee) => listOfEmployees.append(employee));
+  sorted.forEach((employee) => list.append(employee));
 }
 
 function getEmployees(list) {
@@ -25,7 +25,7 @@ function getEmployees(list) {
     return {
       name: employee.innerText,
       position: employee.dataset.position,
-      salary: employee.dataset.salary,
+      salary: convertToNumber(employee.dataset.salary),
       age: employee.dataset.age,
     };
   });
